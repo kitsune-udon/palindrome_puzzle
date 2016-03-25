@@ -44,7 +44,7 @@ end
 def check_row(board, i)
   # decide whether the i th row is palindrome,
   # where the row doesn't have any other candidate.
-  def row_parindrome?(board, i)
+  def row_palindrome?(board, i)
     row = board[i*@n, @n]
     t = row.select{|e| e != 1}
     return t == t.reverse
@@ -52,7 +52,7 @@ def check_row(board, i)
 
   def dfs(board, i, j)
     if j == @n
-      return row_parindrome?(board, i)
+      return row_palindrome?(board, i)
     end
     idx = i*@n+j
     orig_state = board[idx]
@@ -77,7 +77,7 @@ end
 def check_col(board, j)
   # decide whether the i th column is palindrome,
   # where the column doesn't have any other candidate.
-  def col_parindrome?(board, j)
+  def col_palindrome?(board, j)
     col = (0...@m).map{|i| board[i*@n+j]}
     t = col.select{|e| e != 1}
     return t == t.reverse
@@ -85,7 +85,7 @@ def check_col(board, j)
 
   def dfs(board, i, j)
     if i == @m
-      return col_parindrome?(board, j)
+      return col_palindrome?(board, j)
     end
     idx = i*@n+j
     orig_state = board[idx]
